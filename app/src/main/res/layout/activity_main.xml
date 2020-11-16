@@ -4,11 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/green">
 
     <TextView
+        android:id="@+id/appNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_centerInParent="true"
+        android:fontFamily="@font/quando"
+        android:layout_centerHorizontal="true"
+        android:text="Get Healthy With Diete"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/introductionEditText"
+        android:layout_above="@+id/getRecipeButton"
+        android:text="Get a Recipe"
+        android:fontFamily="@font/quando"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/getRecipeButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="-3dp"
+        android:layout_marginBottom="95dp"
+        android:backgroundTint="@color/grey"
+        android:fontFamily="@font/quando"
+        android:text="Get a Recipe"
+        android:textColor="@color/black" />
 
 </RelativeLayout>
