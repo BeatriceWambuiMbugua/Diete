@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Diete</string>
+    <string name="get_healthy_with_diete">Get Healthy With Diete</string>
+    <string name="get_a_recipe">Get a Recipe</string>
 </resources>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".ui.MainActivity"
     android:background="@color/green">
 
     <TextView
@@ -14,7 +14,7 @@
         android:layout_centerInParent="true"
         android:fontFamily="@font/quando"
         android:layout_centerHorizontal="true"
-        android:text="Get Healthy With Diete"
+        android:text="@string/get_healthy_with_diete"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"/>
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/introductionEditText"
         android:layout_above="@+id/getRecipeButton"
-        android:text="Get a Recipe"
+        android:text="@string/get_a_recipe"
         android:fontFamily="@font/quando"
         android:textColor="@color/white"/>
 
@@ -36,9 +36,10 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="-3dp"
         android:layout_marginBottom="95dp"
-        android:backgroundTint="@color/grey"
+        android:background="@drawable/rounded_corners"
         android:fontFamily="@font/quando"
-        android:text="Get a Recipe"
-        android:textColor="@color/black" />
+        android:text="@string/get_a_recipe"
+        android:textColor="@color/black"
+        android:theme="@style/myButtonTheme"/>
 
 </RelativeLayout>
