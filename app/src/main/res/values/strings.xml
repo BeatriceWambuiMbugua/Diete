@@ -2,4 +2,6 @@
     <string name="app_name">Diete</string>
     <string name="get_healthy_with_diete">Get Healthy With Diete</string>
     <string name="get_a_recipe">Get a Recipe</string>
+    <string name="available_recipes_for">Available Recipes for:</string>
+    <string name="enter_your_meal">Enter your Meal</string>
 </resources>

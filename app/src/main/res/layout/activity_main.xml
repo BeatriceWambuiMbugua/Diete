@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/introductionEditText"
         android:layout_above="@+id/getRecipeButton"
-        android:text="@string/get_a_recipe"
+        android:text="@string/enter_your_meal"
         android:fontFamily="@font/quando"
         android:textColor="@color/white"/>
 
