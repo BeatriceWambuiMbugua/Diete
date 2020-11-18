@@ -1,4 +1,4 @@
-package com.moringaschool.diete.ui.adapters;
+package com.moringaschool.diete.adapters;
 
 import android.content.Context;
 import android.widget.ArrayAdapter;
