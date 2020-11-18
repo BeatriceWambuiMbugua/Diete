@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.moringaschool.diete.R;
+import com.moringaschool.diete.ui.adapters.RecipeArrayAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
