@@ -17,6 +17,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.RecipeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.moringaschool.diete.ui.MainActivity">
+            </meta-data>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

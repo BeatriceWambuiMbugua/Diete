@@ -23,9 +23,9 @@ public class RecipeActivity extends AppCompatActivity {
     private String[] recipes = new String[]{"Chicken Stew", "Bacon and Spinach", "Air Fryer Pork Chops", "Brocolli Beef",
     "Easy Chicken Fajitas", "Baked Spaghetti", "Garlicky Spaghetti", "Turkey Casserole", "Air Fryer Shrimp", "Lemon Pepper Chicken", "Beef Totchos", "Pinneapple Baked Chicken",
     "Slow Cooker Chicken Thighs", "Spaghetti and Meatballs"};
-    private String[] cookings = new String[]{"10 minutes", "five minutes", "twenty minutes", "thirty minutes", "ten minutes", "fifteen minutes", "twenty minutes", "forty minutes",
-            "ten minutes", "five minutes", "twenty minutes", "thirty minutes", "ten minutes", "fifteen minutes", "twenty minutes", "forty minutes",
-            "ten minutes", "five minutes", "twenty minutes", "thirty minutes", "ten minutes", "fifteen minutes", "twenty minutes", "forty minutes",
+    private String[] cookings = new String[]{"10 minutes", "5 minutes", "20 minutes", "30 minutes", "20 minutes", "15 minutes", "20 minutes", "40 minutes",
+            "10 minutes", "5 minutes", "20 minutes", "30 minutes", "20 minutes", "15 minutes", "20 minutes", "40 minutes",
+            "10 minutes", "5 minutes", "20 minutes", "30 minutes", "20 minutes", "15 minutes", "20 minutes", "40 minutes"
     };
 
 
