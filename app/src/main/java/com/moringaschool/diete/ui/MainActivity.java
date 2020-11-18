@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.moringaschool.diete.R;
 
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if(v == mGetRecipeButton){
             String introduction = mIntroductionEditText.getText().toString();
+            Toast.makeText(MainActivity.this, "Welcome to Diete", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(MainActivity.this, RecipeActivity.class);
             intent.putExtra("introduction", introduction);
             startActivity(intent);
