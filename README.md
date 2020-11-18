@@ -1,5 +1,5 @@
 # Diete
-The project transitions over 4 weeks. It provides an diet recipe plan for intermediate fasting tribe. 
+The project transitions over 4 weeks. It provides a diet recipe plan for intermediate fasting tribe. 
 
 # Getting Started
 
