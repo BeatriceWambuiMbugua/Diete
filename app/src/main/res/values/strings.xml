@@ -8,4 +8,6 @@
     <string name="search_your_meal">search your meal</string>
     <string name="appbar_scrolling_view_behavior">Appbar</string>
     <string name="meal_categories">meal categories</string>
+    <string name="category">Category</string>
+    <string name="meal_name">Meal Name</string>
 </resources>

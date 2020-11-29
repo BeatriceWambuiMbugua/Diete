@@ -23,10 +23,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.HomePage">
+            android:name=".ui.HomePage"
+            android:theme="@style/NoActionBarTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.moringaschool.diete.ui.MainActivity"></meta-data>
+                android:value="com.moringaschool.diete.ui.MainActivity" />
         </activity>
 
         <meta-data
