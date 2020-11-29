@@ -4,43 +4,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.MainActivity"
-    android:background="@color/green">
+    android:background="@color/green"
+    tools:context=".ui.MainActivity">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="51dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
+        android:layout_marginEnd="51dp"
+        android:contentDescription="@string/food_image"
         android:src="@drawable/food" />
 
     <TextView
         android:id="@+id/appNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@id/introductionEditText"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="400dp"
+        android:layout_marginBottom="20dp"
         android:fontFamily="@font/quando"
+        android:paddingTop="10dp"
         android:text="@string/get_healthy_with_diete"
+        android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold" />
 
     <EditText
+        android:id="@+id/introductionEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/introductionEditText"
         android:layout_above="@+id/getRecipeButton"
-        android:hint="@string/enter_your_meal"
-        android:fontFamily="@font/quando"
-        android:textColor="@color/black"
-        android:background="@color/grey"
-        android:padding="5dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="40dp"
+        android:autofillHints="@string/enter_your_meal"
+        android:background="@color/grey"
+        android:fontFamily="@font/quando"
+        android:hint="@string/enter_your_meal"
+        android:inputType="text"
+        android:padding="5dp"
+        android:paddingTop="10dp"
+        android:textAlignment="center"
+        android:textColor="@color/black" />
 
     <Button
         android:id="@+id/getRecipeButton"
@@ -48,12 +56,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="-3dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginEnd="-7dp"
+        android:layout_marginBottom="127dp"
         android:background="@drawable/rounded_corners"
         android:fontFamily="@font/quando"
-        android:text="@string/get_a_recipe"
+        android:text="@string/get_recipe"
         android:textColor="@color/black"
-        android:theme="@style/myButtonTheme"/>
+        android:theme="@style/myButtonTheme" />
 
 </RelativeLayout>
