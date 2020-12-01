@@ -61,7 +61,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.viewpager.widget.ViewPager
-                android:id="@+id/viewPageHeader"
+                android:id="@+id/viewPagerHeader"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_below="@+id/cardSearch"
@@ -84,7 +84,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="5dp"
-                android:layout_below="@id/viewPageHeader"/>
+                android:layout_below="@id/viewPagerHeader"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"

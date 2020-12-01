@@ -2,9 +2,12 @@ package com.moringaschool.diete.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -17,19 +20,23 @@ import android.widget.Toast;
 
 import com.moringaschool.diete.R;
 
+import android.os.Handler;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
     Animation topAnim, bottomAnim;
     ImageView image;
+    TextView appnameview;
     TextView appname;
-    EditText introduction;
+    private static int SPLASH_SCREEN = 5000;
 
 
-    @BindView (R.id.getRecipeButton) Button mGetRecipeButton;
-    @BindView(R.id.introductionEditText) EditText mIntroductionEditText;
-    @BindView (R.id.appNameTextView) TextView mAppNameTextView;
+    @BindView(R.id.appName)
+    EditText mAppName;
+    @BindView(R.id.appNameTextView)
+    TextView mAppNameTextView;
 
 
     @Override
@@ -37,32 +44,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+
 
         //Animations
-        topAnim = AnimationUtils.loadAnimation(this,  R.anim.top_animation);
-        bottomAnim = AnimationUtils.loadAnimation(this,  R.anim.bottom_animation);
+        topAnim = AnimationUtils.loadAnimation(this, R.anim.top_animation);
+        bottomAnim = AnimationUtils.loadAnimation(this, R.anim.bottom_animation);
 
         image = findViewById(R.id.imageView);
-        appname = findViewById(R.id.appNameTextView);
-        introduction = findViewById(R.id.introductionEditText);
+        appnameview = findViewById(R.id.appNameTextView);
+        appname = findViewById(R.id.appName);
+
 
         image.setAnimation(topAnim);
         appname.setAnimation(topAnim);
-        introduction.setAnimation(bottomAnim);
+        appnameview.setAnimation(bottomAnim);
 
-        mGetRecipeButton.setOnClickListener(this);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(MainActivity.this, Login.class);
+                Pair[] pairs = new Pair[2];
+                pairs[0] = new Pair<View, String>(image, "logo_image");
+                pairs[1] = new Pair<View, String>(appname, "app_name");
+                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, pairs);
+                startActivity(intent, options.toBundle());
+
+
+            }
+        }, SPLASH_SCREEN);
+
     }
 
-    @Override
-    public void onClick(View v) {
-        if(v == mGetRecipeButton){
-            String introduction = mIntroductionEditText.getText().toString();
-            Toast.makeText(MainActivity.this, "Welcome to Diete", Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(MainActivity.this, HomePage.class);
-            intent.putExtra("introduction", introduction);
-            startActivity(intent);
 
-        }
-    }
 }

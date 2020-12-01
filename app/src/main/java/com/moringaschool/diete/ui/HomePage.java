@@ -9,7 +9,9 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
+import com.moringaschool.diete.Constants;
 import com.moringaschool.diete.R;
 import com.moringaschool.diete.adapters.RecyclerViewHomeAdapter;
 import com.moringaschool.diete.adapters.ViewPagerHeaderAdapter;
@@ -23,7 +25,7 @@ import butterknife.ButterKnife;
 
 public class HomePage extends AppCompatActivity implements HomeView {
 
-    @BindView(R.id.viewPageHeader) ViewPager viewPagerMeal;
+    @BindView(R.id.viewPagerHeader) ViewPager viewPagerMeal;
     @BindView(R.id.recyclerCategory)  RecyclerView recyclerViewCategory;
 
     RecipeActivity activity;
@@ -58,6 +60,10 @@ public class HomePage extends AppCompatActivity implements HomeView {
         viewPagerMeal.setAdapter(headerAdapter);
         viewPagerMeal.setPadding(20, 0, 150, 0);
         headerAdapter.notifyDataSetChanged();
+
+        headerAdapter.setOnItemClickListener((v, position) -> {
+            Toast.makeText(this, meal.get(position).getStrMeal(), Toast.LENGTH_SHORT).show();
+        });
         }
 
     @Override
@@ -70,10 +76,15 @@ public class HomePage extends AppCompatActivity implements HomeView {
         recyclerViewCategory.setNestedScrollingEnabled(true);
         homeAdapter.notifyDataSetChanged();
 
+        homeAdapter.setOnItemClickListener((view, position) -> {
+            Toast.makeText(this, category.get(position).getStrCategory(), Toast.LENGTH_SHORT).show();
+
+        });
+
     }
 
     @Override
     public void onErrorLoading(String message) {
-
+        Constants.showDialogMessage(this, "Title", message);
     }
 }

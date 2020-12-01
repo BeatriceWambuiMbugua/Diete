@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "925989035447",
+    "firebase_url": "https://diete-e937c.firebaseio.com",
+    "project_id": "diete-e937c",
+    "storage_bucket": "diete-e937c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:925989035447:android:79f2fe998e18de49389c32",
+        "android_client_info": {
+          "package_name": "com.moringaschool.diete"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "925989035447-ca5td7mm15ade04lh5hnpmimdhr2797l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.moringaschool.diete",
+            "certificate_hash": "ca286f48ab68e04cf36f057a4e2fe2a7163a9f42"
+          }
+        },
+        {
+          "client_id": "925989035447-5lel70m5c5pnl68boedf5vfstls8buvc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmR_pFV1_0sB1TT-A-jVM7_WlWPacAKaI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "925989035447-5lel70m5c5pnl68boedf5vfstls8buvc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

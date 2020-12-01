@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -32,25 +34,25 @@ public class ViewPagerHeaderAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
+
         return meals.size();
     }
 
     @Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
-        return view.equals(object);
+        return view == ((RelativeLayout) object);
     }
 
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_page_header, container, false
-        );
+        View view = LayoutInflater.from(context).inflate(R.layout.item_page_header, container, false);
 
         ImageView mealThumb = view.findViewById(R.id.mealThumb);
         TextView mealName = view.findViewById(R.id.mealName);
 
         String strMealThumb = meals.get(position).getStrMealThumb();
-        Picasso.get().load(strMealThumb).into(mealThumb);
+        Picasso.get().load(strMealThumb).placeholder(R.drawable.shadow_bottom).into(mealThumb);
 
         String strMealName = meals.get(position).getStrMeal();
         mealName.setText(strMealName);
@@ -63,8 +65,9 @@ public class ViewPagerHeaderAdapter extends PagerAdapter {
 
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-        container.removeView((View)object);
+        container.removeView((View) object);
     }
+
     public interface ClickListener {
         void onClick(View v, int position);
     }
