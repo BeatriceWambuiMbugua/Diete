@@ -31,6 +31,7 @@ public class Login extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
 
+
         callSignUp = findViewById(R.id.signup_screen);
         image = findViewById(R.id.imageView);
         logoText = findViewById(R.id.logo_name);
@@ -38,6 +39,11 @@ public class Login extends AppCompatActivity {
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
         login_btn = findViewById(R.id.login_btn);
+
+        login_btn.setOnClickListener(v -> {
+            Intent intent = new Intent (Login.this, HomePage.class);
+            startActivity(intent);
+        });
 
         callSignUp.setOnClickListener((view) ->{
             Intent intent = new Intent(Login.this, Signup.class);
