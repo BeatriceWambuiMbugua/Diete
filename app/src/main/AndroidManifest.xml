@@ -13,6 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Diete">
+        <activity android:name=".ui.Signup"></activity>
         <activity
             android:name=".ui.MainActivity"
             android:theme="@style/NoActionBarTheme">
@@ -23,9 +24,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.Login">
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.moringaschool.diete.ui.MainActivity" >
-            </meta-data>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.moringaschool.diete.ui.MainActivity"></meta-data>
         </activity>
         <activity
             android:name=".ui.HomePage"
