@@ -22,6 +22,7 @@
         android:text="@string/hello_there_welcome_back"
         android:textStyle="bold"
         android:textSize="40sp"
+        android:transitionName="logo_name"
         android:layout_marginStart="15dp"
         android:fontFamily="@font/quando"
         android:textColor="@color/black"/>
@@ -32,6 +33,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/antic"
         android:text="@string/sign_in_to_continue"
+        android:transitionName="slogan_name"
         android:textSize="18sp"
         android:layout_marginStart="15dp"/>
     <LinearLayout
@@ -46,6 +48,7 @@
             android:layout_width="match_parent"
             android:id="@+id/username"
             android:hint="@string/username"
+            android:transitionName="username_tran"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:boxStrokeColor="@color/black"
             app:boxStrokeWidth="3dp">
@@ -61,6 +64,7 @@
             android:id="@+id/password"
             app:passwordToggleEnabled="true"
             android:hint="@string/password"
+            android:transitionName="password_tran"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:boxStrokeColor="@color/black"
             app:boxStrokeWidth="3dp">
@@ -88,7 +92,9 @@
             android:backgroundTint="@color/black"
             android:textColor="@color/white"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"/>
+            android:layout_marginBottom="5dp"
+            android:id="@+id/login_btn"
+            android:transitionName="button_tran"/>
 
         <Button
             android:layout_width="match_parent"
@@ -99,7 +105,9 @@
             android:elevation="0dp"
             android:textColor="@color/black"
             android:layout_margin="5dp"
-            android:fontFamily="@font/antic"/>
+            android:id="@+id/signup_screen"
+            android:fontFamily="@font/antic"
+            android:transitionName="login_signup_tran"/>
 
 
     </LinearLayout>
