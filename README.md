@@ -2,11 +2,19 @@
 The project transitions over 4 weeks. It provides a diet recipe plan for intermediate fasting tribe. 
 # Getting Started
 Open your Terminal (CTRL ALT T)
+
 Clone the project from github clone (https://github.com/BeatriceWambuiMbugua/Diete)
+
 cd Diete
+
 Open the folder in your text editor preferably Android studio or Intellij
+
+# Figma Link
+
+https://www.figma.com/file/JNZlo3YT9QQiWrhhGck2q9/Recipe-App-Design?node-id=0%3A1
+
 # Prerequisites
-Android Studio
+## Android Studio
 Installing
 Check your Java Version NB: Before downloading and installing Android Studio, make sure your computer is equipped with JDK 8 or higher. (java --version)
 
