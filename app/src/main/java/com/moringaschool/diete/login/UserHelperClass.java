@@ -1,4 +1,4 @@
-package com.moringaschool.diete.ui;
+package com.moringaschool.diete.login;
 
 public class UserHelperClass {
     String name, username, email, phoneNumber, password;
