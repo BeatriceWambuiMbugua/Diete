@@ -11,10 +11,12 @@ cd Diete
 Open the folder in your text editor preferably Android studio or Intellij
 
 # Figma Link
+
 https://www.figma.com/file/JNZlo3YT9QQiWrhhGck2q9/Recipe-App-Design?node-id=0%3A1
 
 # Prerequisites
 ## Android Studio
+
 Before Installing Android Studio
 
 Check your Java Version NB: Before downloading and installing Android Studio, make sure your computer is equipped with JDK 8 or higher. (java --version)
@@ -37,6 +39,7 @@ Java
 XML and Android Layouts
 
 # Author
+
 Beatrice Wambui Mbugua
 
 # License
@@ -50,5 +53,7 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-Contact
+# Contact
+
+
 Email: wambuimbeatrice@gmail.com
