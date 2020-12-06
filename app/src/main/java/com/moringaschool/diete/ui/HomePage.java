@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,9 +17,11 @@ import com.moringaschool.diete.Constants;
 import com.moringaschool.diete.R;
 import com.moringaschool.diete.adapters.RecyclerViewHomeAdapter;
 import com.moringaschool.diete.adapters.ViewPagerHeaderAdapter;
+import com.moringaschool.diete.category.CategoryActivity;
 import com.moringaschool.diete.models.Categories;
 import com.moringaschool.diete.models.Meals;
 
+import java.io.Serializable;
 import java.util.List;
 
 import butterknife.BindView;
@@ -26,6 +29,8 @@ import butterknife.ButterKnife;
 
 public class HomePage extends AppCompatActivity implements HomeView {
 
+    public static final String EXTRA_CATEGORY = "category";
+    public static final String EXTRA_POSITION = "position";
     @BindView(R.id.viewPagerHeader) ViewPager viewPagerMeal;
     @BindView(R.id.recyclerCategory)  RecyclerView recyclerViewCategory;
 
@@ -45,14 +50,14 @@ public class HomePage extends AppCompatActivity implements HomeView {
 
     @Override
     public void showLoading() {
-        findViewById(R.id.excitingMeal).setVisibility(View.VISIBLE);
+        findViewById(R.id.shimmerMeal).setVisibility(View.VISIBLE);
         findViewById(R.id.shimmerCategory).setVisibility(View.VISIBLE);
 
     }
 
     @Override
     public void hideLoading() {
-        findViewById(R.id.excitingMeal).setVisibility(View.GONE);
+        findViewById(R.id.shimmerCategory).setVisibility(View.GONE);
         findViewById(R.id.shimmerCategory).setVisibility(View.GONE);
     }
 
@@ -79,6 +84,10 @@ public class HomePage extends AppCompatActivity implements HomeView {
         homeAdapter.notifyDataSetChanged();
 
         homeAdapter.setOnItemClickListener((view, position) -> {
+            Intent intent = new Intent(this, CategoryActivity.class);
+            intent.putExtra(EXTRA_CATEGORY, (Serializable) category);
+            intent.putExtra(EXTRA_POSITION, position);
+            startActivity(intent);
             Toast.makeText(this, category.get(position).getStrCategory(), Toast.LENGTH_SHORT).show();
 
         });

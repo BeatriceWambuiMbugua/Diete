@@ -1,10 +1,11 @@
 package com.moringaschool.diete.models;
 
+import java.io.Serializable;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Categories {
+public class Categories implements Serializable {
 
     @SerializedName("categories")
     @Expose
@@ -18,7 +19,7 @@ public class Categories {
         this.categories = categories;
     }
 
-    public class Category {
+    public class Category implements Serializable{
 
         @SerializedName("idCategory")
         @Expose

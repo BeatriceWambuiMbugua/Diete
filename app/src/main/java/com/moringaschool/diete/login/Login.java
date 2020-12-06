@@ -1,11 +1,13 @@
 package com.moringaschool.diete.login;
 
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.view.WindowManager;
@@ -46,22 +48,7 @@ public class Login extends AppCompatActivity {
         password = findViewById(R.id.password);
         login_btn = findViewById(R.id.login_btn);
 
-
-
-        login_btn.setOnClickListener(v -> {
-            if (!validateUsername() || !validatePassword()) {
-                return;
-            }
-             else {
-                isUser();
-            }
-            Intent intent = new Intent(Login.this, HomePage.class);
-            startActivity(intent);
-        });
-
-
-
-        callSignUp.setOnClickListener((view) ->{
+        callSignUp.setOnClickListener((view) -> {
             Intent intent = new Intent(Login.this, Signup.class);
 
             Pair[] pairs = new Pair[7];
@@ -75,8 +62,7 @@ public class Login extends AppCompatActivity {
             pairs[6] = new Pair<View, String>(callSignUp, "login_signup_tran");
 
 
-
-          ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(Login.this, callSignUp, String.valueOf(pairs));
+            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(Login.this, callSignUp, String.valueOf(pairs));
             startActivity(intent, options.toBundle());
         });
     }
@@ -84,31 +70,29 @@ public class Login extends AppCompatActivity {
 
     private Boolean validateUsername() {
         String val = username.getEditText().getText().toString();
-        if (val.isEmpty()){
+        if (val.isEmpty()) {
             username.setError("Field Cannot be empty");
             return false;
-        }
-        else {
+        } else {
             username.setError(null);
             username.setErrorEnabled(false);
             return true;
         }
 
     }
+
     private Boolean validatePassword() {
         String val = password.getEditText().getText().toString();
         if (val.isEmpty()) {
             password.setError("Field Cannot be empty");
             return false;
-        }
-        else {
+        } else {
             password.setError(null);
             password.setErrorEnabled(false);
             return true;
         }
 
     }
-
 
     private void isUser() {
         String userEnteredUsername = username.getEditText().getText().toString().trim();
@@ -121,37 +105,40 @@ public class Login extends AppCompatActivity {
         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()){
+                if (dataSnapshot.exists()) {
                     username.setError(null);
                     username.setErrorEnabled(false);
 
                     String passwordFromDB = dataSnapshot.child(userEnteredUsername).child("password").getValue(String.class);
 
-                    if(passwordFromDB.equals(userEnteredPassword)){
-
+                    if (passwordFromDB != null && passwordFromDB.equals(userEnteredPassword)) {
                         username.setError(null);
                         username.setErrorEnabled(false);
 
-                        String nameFromDB = dataSnapshot.child(userEnteredUsername).child("name").getValue(String.class);
-                        String usernameFromDB = dataSnapshot.child(userEnteredUsername).child("username").getValue(String.class);
-                        String phoneNumberFromDB = dataSnapshot.child(userEnteredUsername).child("phoneNumber").getValue(String.class);
+
                         String emailFromDB = dataSnapshot.child(userEnteredUsername).child("email").getValue(String.class);
+                        String nameFromDB = dataSnapshot.child(userEnteredUsername).child("name").getValue(String.class);
+                        String phoneNumberFromDB = dataSnapshot.child(userEnteredUsername).child("phoneNumber").getValue(String.class);
+                        String usernameFromDB = dataSnapshot.child(userEnteredUsername).child("username").getValue(String.class);
+
+
+
 
                         Intent intent = new Intent(getApplicationContext(), HomePage.class);
 
-                        intent.putExtra("name", nameFromDB);
-                        intent.putExtra("username", usernameFromDB);
                         intent.putExtra("email", emailFromDB);
-                        intent.putExtra("phoneNumber", phoneNumberFromDB);
+                        intent.putExtra("name", nameFromDB);
                         intent.putExtra("password", passwordFromDB);
+                        intent.putExtra("phoneNumber", phoneNumberFromDB);
+                        intent.putExtra("username", usernameFromDB);
+
 
                         startActivity(intent);
-                    }
-                    else{
+                    } else {
                         password.setError("Wrong Password");
                         password.requestFocus();
                     }
-                } else{
+                } else {
                     username.setError("No such User Exists");
                     username.requestFocus();
 
@@ -166,5 +153,11 @@ public class Login extends AppCompatActivity {
 
     }
 
-
+    public void loginUser(View view) {
+        if (!validatePassword()| !validateUsername()) {
+            return;
+        } else {
+            isUser();
+        }
+    }
 }

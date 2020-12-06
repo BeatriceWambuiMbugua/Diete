@@ -34,7 +34,8 @@
                 android:text="@string/app_name"
                 android:textColor="@color/white"
                 android:textSize="30sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:fontFamily="@font/quando"/>
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardSearch"
@@ -54,6 +55,7 @@
                     android:drawablePadding="10dp"
                     android:gravity="center_vertical"
                     android:padding="10dp"
+                    android:fontFamily="@font/antic"
                     android:text="@string/search_your_meal"
                     android:textColor="@color/cardview_light_background"
                     app:drawableLeftCompat="@drawable/search_ic"
@@ -70,20 +72,21 @@
                 android:foregroundGravity="center"
                 android:overScrollMode="never" />
 
-            <include android:id="@+id/excitingMeal"
+            <include android:id="@+id/shimmerMeal"
                 layout="@layout/header_shimmer"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/titleCategory"
-                android:text="@string/meal_categories"
+                android:text="Meal Categories"
                 android:textSize="19sp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="5dp"
+                android:fontFamily="@font/quando"
                 android:layout_below="@id/viewPagerHeader"/>
 
             <androidx.recyclerview.widget.RecyclerView
@@ -105,13 +108,12 @@
                 android:gravity="center"
                 android:textColor="@color/white"
                 android:text="@string/app_name"
-                android:background="@color/grey"
+                android:background="@color/green"
                 android:layout_alignParentBottom="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/quando"/>
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
-
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,6 +1,7 @@
 package com.moringaschool.diete.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public class ViewPagerHeaderAdapter extends PagerAdapter {
+    //private static final String TAG = getContext
     private List<Meals.Meal> meals;
     private Context context;
     private static ClickListener clickListener;
@@ -52,10 +54,11 @@ public class ViewPagerHeaderAdapter extends PagerAdapter {
         TextView mealName = view.findViewById(R.id.mealName);
 
         String strMealThumb = meals.get(position).getStrMealThumb();
-        Picasso.get().load(strMealThumb).placeholder(R.drawable.shadow_bottom).into(mealThumb);
+       Picasso.get().load(strMealThumb).into(mealThumb);
 
         String strMealName = meals.get(position).getStrMeal();
         mealName.setText(strMealName);
+
 
         view.setOnClickListener(v -> clickListener.onClick(v, position));
 

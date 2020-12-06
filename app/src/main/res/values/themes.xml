@@ -16,8 +16,12 @@
         <item name="android:windowContentTransitions">true</item>
     </style>
     <style name="NoActionBarTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar"></style>
-    <style name="myButtonTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="myButtonTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorButtonNormal">#F6F6F6</item>
+    </style>
+    <style name="AppBarLayoutTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorControlNormal">@color/green</item>
+        <item name="titleTextColor">@color/white</item>
     </style>
 
 

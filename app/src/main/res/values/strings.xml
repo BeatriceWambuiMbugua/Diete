@@ -7,7 +7,7 @@
     <string name="food_image">food image</string>
     <string name="search_your_meal">search your meal</string>
     <string name="appbar_scrolling_view_behavior">Appbar</string>
-    <string name="meal_categories">meal categories</string>
+    <string name="meal_categories">Meal Categories</string>
     <string name="category">Category</string>
     <string name="meal_name">Meal Name</string>
     <string name="hello_there_welocme_back">Hello there, welocme back</string>
@@ -25,4 +25,6 @@
     <string name="email">Email</string>
     <string name="go">GO</string>
     <string name="already_have_an_account_login">Already have an account? LogIn</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
