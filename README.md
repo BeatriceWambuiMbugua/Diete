@@ -2,7 +2,6 @@
 The project transitions over 4 weeks. It provides a diet recipe plan for intermediate fasting tribe. 
 
 # Getting Started
-
 Open your Terminal (CTRL ALT T)
 
 Clone the project from github clone (https://github.com/BeatriceWambuiMbugua/Diete)
@@ -33,8 +32,8 @@ sudo apt install openjdk-11-jre-headless
 sudo apt install openjdk-8-jre-headless
 
 On Installing- Android Studio - Google for more details on the process since it keeps changing depending on the version
-# Built With
 
+# Built With
 Java
 
 XML and Android Layouts
@@ -55,5 +54,6 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 # Contact
+
 
 Email: wambuimbeatrice@gmail.com
