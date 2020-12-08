@@ -56,21 +56,17 @@ public class MainActivity extends AppCompatActivity {
         appnameview.setAnimation(bottomAnim);
 
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(MainActivity.this, Login.class);
-                Pair[] pairs = new Pair[2];
-                pairs[0] = new Pair<View, String>(image, "food_image");
-                pairs[1] = new Pair<View, String>(appname, "app_name");
-                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, pairs);
-                startActivity(intent, options.toBundle());
+        new Handler().postDelayed(() -> {
+            Intent intent = new Intent(MainActivity.this, Login.class);
+            Pair[] pairs = new Pair[2];
+            pairs[0] = new Pair<View, String>(image, "food_image");
+            pairs[1] = new Pair<View, String>(appname, "app_name");
+            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, pairs);
+            startActivity(intent, options.toBundle());
 
 
-            }
         }, SPLASH_SCREEN);
 
     }
-
 
 }

@@ -1,6 +1,7 @@
 package com.moringaschool.diete.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
@@ -8,16 +9,20 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.moringaschool.diete.Constants;
 import com.moringaschool.diete.R;
 import com.moringaschool.diete.adapters.RecyclerViewHomeAdapter;
 import com.moringaschool.diete.adapters.ViewPagerHeaderAdapter;
 import com.moringaschool.diete.category.CategoryActivity;
+import com.moringaschool.diete.login.Login;
 import com.moringaschool.diete.models.Categories;
 import com.moringaschool.diete.models.Meals;
 
@@ -34,6 +39,7 @@ public class HomePage extends AppCompatActivity implements HomeView {
     @BindView(R.id.viewPagerHeader) ViewPager viewPagerMeal;
     @BindView(R.id.recyclerCategory)  RecyclerView recyclerViewCategory;
 
+
     RecipeActivity activity;
 
     @Override
@@ -41,6 +47,8 @@ public class HomePage extends AppCompatActivity implements HomeView {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_home_page);
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
         ButterKnife.bind(this);
 
         activity = new RecipeActivity(this);
@@ -97,5 +105,29 @@ public class HomePage extends AppCompatActivity implements HomeView {
     @Override
     public void onErrorLoading(String message) {
         Constants.showDialogMessage(this, "Title", message);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_logout) {
+            logout();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void logout() {
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(HomePage.this, Login.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
     }
 }

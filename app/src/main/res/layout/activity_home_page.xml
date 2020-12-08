@@ -18,6 +18,17 @@
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:orientation="vertical">
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/my_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                android:elevation="4dp"
+                android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                android:backgroundTint="@color/green"
+                android:fontFamily= "@font/quando"
+                app:titleTextColor="@color/white" />
 
             <View
                 android:layout_width="match_parent"
@@ -35,7 +46,9 @@
                 android:textColor="@color/white"
                 android:textSize="30sp"
                 android:textStyle="bold"
-                android:fontFamily="@font/quando"/>
+                android:fontFamily="@font/quando"
+                android:layout_below="@+id/my_toolbar"
+                android:textAlignment="center"/>
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardSearch"
@@ -116,4 +129,5 @@
                 android:fontFamily="@font/quando"/>
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

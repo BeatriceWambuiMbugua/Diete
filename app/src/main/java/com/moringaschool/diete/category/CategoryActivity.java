@@ -2,10 +2,12 @@ package com.moringaschool.diete.category;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
-
+import androidx.appcompat.widget.Toolbar;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+
 
 import com.google.android.material.tabs.TabLayout;
 import com.moringaschool.diete.R;
@@ -39,15 +41,28 @@ public class CategoryActivity extends AppCompatActivity {
         List<Categories.Category> categories = (List<Categories.Category>) intent.getSerializableExtra(HomePage.EXTRA_CATEGORY);
         int position = intent.getIntExtra(HomePage.EXTRA_POSITION, 0);
 
-        ViewPagerCategoryAdapter adapter = new ViewPagerCategoryAdapter(getSupportFragmentManager(), getLifecycle(), categories);
-      
-
+        ViewPagerCategoryAdapter adapter = new ViewPagerCategoryAdapter(getSupportFragmentManager(), categories);
+        viewPager.setAdapter(adapter);
+        tabLayout.setupWithViewPager(viewPager);
+        viewPager.setCurrentItem(position, true);
+        adapter.notifyDataSetChanged();
     }
-
     private void initActionBar() {
-        setSupportActionBar(null);
+        setSupportActionBar(toolBar);
         if (getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+    }
+
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                break;
+        }
+        return true;
     }
 }

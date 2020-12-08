@@ -17,23 +17,17 @@ import com.moringaschool.diete.models.Categories;
 
 import java.util.List;
 
-public class ViewPagerCategoryAdapter extends FragmentStateAdapter {
+public class ViewPagerCategoryAdapter extends FragmentPagerAdapter {
 
-   private List<Categories.Category> categories;
+    private List<Categories.Category> categories;
 
-    public ViewPagerCategoryAdapter(FragmentManager fragmentManager, Lifecycle lifecycle, List<Categories.Category> categories) {
-        super(fragmentManager, lifecycle);
+    public ViewPagerCategoryAdapter(FragmentManager fm, List<Categories.Category> categories) {
+        super(fm);
         this.categories = categories;
     }
 
     @Override
-    public int getItemCount() {
-        return categories.size();
-    }
-
-    @NonNull
-    @Override
-    public Fragment createFragment(int i) {
+    public Fragment getItem(int position) {
         CategoryFragment fragment = new CategoryFragment();
         Bundle args = new Bundle();
 //       args.putString("EXTRA_DATA_NAME", categories.get(i).getStrCategory());
@@ -43,4 +37,15 @@ public class ViewPagerCategoryAdapter extends FragmentStateAdapter {
         return fragment;
     }
 
+    @Override
+    public int getCount() {
+        return categories.size();
+    }
+
+    @Nullable
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return categories.get(position).getStrCategory();
+    }
 }
+

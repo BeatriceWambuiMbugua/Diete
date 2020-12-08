@@ -1,8 +1,6 @@
 package com.moringaschool.diete.login;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,18 +9,16 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.moringaschool.diete.R;
 import com.moringaschool.diete.ui.HomePage;
-
 import java.lang.Boolean;
+
+
 
 public class Signup extends AppCompatActivity implements View.OnClickListener {
     Button login_btn, regtologinbtn;
@@ -141,25 +137,25 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
         createAuthStateListener();
 
 
-        login_btn.setOnClickListener(v -> {
-            rootNode = FirebaseDatabase.getInstance();
-            reference = rootNode.getReference("users");
-
-            if (!validateName() | !validateUsername() | !validatePhoneNumber() | !validatePassword() | !validateEmail()) {
-                return;
-            }
-            String name = regname.getEditText().getText().toString();
-            String username = regusername.getEditText().getText().toString();
-            String email = regemail.getEditText().getText().toString();
-            String phoneNumber = regphoneNumber.getEditText().getText().toString();
-            String password = regpassword.getEditText().getText().toString();
-
-            UserHelperClass helperClass = new UserHelperClass(name, username, email, phoneNumber, password);
-            reference.child(phoneNumber).setValue(helperClass);
-
-            Intent intent = new Intent(Signup.this, HomePage.class);
-            startActivity(intent);
-        });
+//        login_btn.setOnClickListener(v -> {
+//            rootNode = FirebaseDatabase.getInstance();
+//            reference = rootNode.getReference("users");
+//
+//            if (!validateName() | !validateUsername() | !validatePhoneNumber() | !validatePassword() | !validateEmail()) {
+//                return;
+//            }
+//            String name = regname.getEditText().getText().toString();
+//            String username = regusername.getEditText().getText().toString();
+//            String email = regemail.getEditText().getText().toString();
+//            String phoneNumber = regphoneNumber.getEditText().getText().toString();
+//            String password = regpassword.getEditText().getText().toString();
+//
+//            UserHelperClass helperClass = new UserHelperClass(name, username, email, phoneNumber, password);
+//            reference.child(phoneNumber).setValue(helperClass);
+//
+//            Intent intent = new Intent(Signup.this, HomePage.class);
+//            startActivity(intent);
+//        });
 
 
     }
@@ -178,12 +174,21 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void createNewUser() {
+
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("users");
+
         String name = regname.getEditText().getText().toString().trim();
         String username = regusername.getEditText().getText().toString().trim();
         String email = regemail.getEditText().getText().toString().trim();
         String phoneNumber = regphoneNumber.getEditText().getText().toString().trim();
         String password = regpassword.getEditText().getText().toString().trim();
         String confirmPassword = regpassword.getEditText().getText().toString().trim();
+
+
+        if (!validateName() | !validateUsername() | !validatePhoneNumber() | !validatePassword() | !validateEmail()) return;
+        UserHelperClass helperClass = new UserHelperClass(name, username, email, phoneNumber, password);
+        reference.child(phoneNumber).setValue(helperClass);
 
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, task -> {
             if (task.isSuccessful()) {

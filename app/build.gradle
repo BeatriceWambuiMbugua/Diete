@@ -69,4 +69,5 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:26.1.0')
     implementation 'com.google.firebase:firebase-database:19.5.1'
 
+
 }
