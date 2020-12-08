@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.moringaschool.diete.R;
@@ -30,10 +31,11 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
     FirebaseDatabase rootNode;
     DatabaseReference reference;
     private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
 
     private Boolean validateName() {
         String val = regname.getEditText().getText().toString();
-        if (val.isEmpty()){
+        if (val.isEmpty()) {
             regname.setError("Field Cannot be empty");
             return false;
         } else {
@@ -43,43 +45,44 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
         }
 
     }
+
     private Boolean validateUsername() {
         String val = regusername.getEditText().getText().toString().trim();
-        if (val.isEmpty()){
+        if (val.isEmpty()) {
             regusername.setError("Field Cannot be empty");
             return false;
-        } else if(val.length()>=15){
+        } else if (val.length() >= 15) {
             regusername.setError("Username too long");
             return false;
-        }
-        else {
+        } else {
             regusername.setError(null);
             regusername.setErrorEnabled(false);
             return true;
         }
 
     }
+
     private Boolean validateEmail() {
         String val = regemail.getEditText().getText().toString();
         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-        if (val.isEmpty()){
+        if (val.isEmpty()) {
             regemail.setError("Field Cannot be empty");
             return false;
-        } else if(!val.matches(emailPattern)){
+        } else if (!val.matches(emailPattern)) {
             regemail.setError("Invalid Email Address");
             return false;
 
-        }
-        else {
+        } else {
             regemail.setError(null);
             regemail.setErrorEnabled(false);
             return true;
         }
 
     }
+
     private Boolean validatePhoneNumber() {
         String val = regphoneNumber.getEditText().getText().toString();
-        if (val.isEmpty()){
+        if (val.isEmpty()) {
             regphoneNumber.setError("Field Cannot be empty");
             return false;
         } else {
@@ -89,6 +92,7 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
         }
 
     }
+
     private Boolean validatePassword() {
         String val = regpassword.getEditText().getText().toString();
         String passwordVal = "^" +
@@ -100,14 +104,13 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
                 "(?=\\S+$)" +           //no white spaces
                 ".{4,}" +               //at least 4 characters
                 "$";
-        if (val.isEmpty()){
+        if (val.isEmpty()) {
             regpassword.setError("Field Cannot be empty");
             return false;
         } else if (!val.matches(passwordVal)) {
             regpassword.setError("Password is too weak");
             return false;
-        }
-        else {
+        } else {
             regpassword.setError(null);
             regpassword.setErrorEnabled(false);
             return true;
@@ -135,14 +138,14 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
 
         mAuth = FirebaseAuth.getInstance();
 
-
+        createAuthStateListener();
 
 
         login_btn.setOnClickListener(v -> {
             rootNode = FirebaseDatabase.getInstance();
             reference = rootNode.getReference("users");
 
-            if(!validateName() | !validateUsername() | !validatePhoneNumber() | !validatePassword() | !validateEmail()){
+            if (!validateName() | !validateUsername() | !validatePhoneNumber() | !validatePassword() | !validateEmail()) {
                 return;
             }
             String name = regname.getEditText().getText().toString();
@@ -154,7 +157,7 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
             UserHelperClass helperClass = new UserHelperClass(name, username, email, phoneNumber, password);
             reference.child(phoneNumber).setValue(helperClass);
 
-            Intent intent = new Intent (Signup.this, HomePage.class);
+            Intent intent = new Intent(Signup.this, HomePage.class);
             startActivity(intent);
         });
 
@@ -163,12 +166,12 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        if (view == regtologinbtn){
+        if (view == regtologinbtn) {
             Intent intent = new Intent(Signup.this, Login.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         }
-        if (view == login_btn){
+        if (view == login_btn) {
             createNewUser();
         }
 
@@ -183,15 +186,39 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
         String confirmPassword = regpassword.getEditText().getText().toString().trim();
 
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, task -> {
-                if (task.isSuccessful()) {
-                    Log.d(TAG, "Authentication successful");
-                } else {
-                    Toast.makeText(Signup.this, "Authentication failed.",
-                            Toast.LENGTH_SHORT).show();
-                }
+            if (task.isSuccessful()) {
+                Log.d(TAG, "Authentication successful");
+            } else {
+                Toast.makeText(Signup.this, "Authentication failed.",
+                        Toast.LENGTH_SHORT).show();
+            }
         });
 
 
+    }
 
+    private void createAuthStateListener() {
+        mAuthListener = firebaseAuth -> {
+            final FirebaseUser user = firebaseAuth.getCurrentUser();
+            if (user != null ){
+                Intent intent = new Intent(Signup.this, HomePage.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+            }
+        };
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
     }
 }
