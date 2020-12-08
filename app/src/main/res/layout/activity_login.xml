@@ -47,8 +47,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:id="@+id/username"
-            android:hint="@string/username"
+            android:id="@+id/email"
+            android:hint="@string/email"
             android:textColorHint="@color/white"
             android:transitionName="username_tran"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -91,7 +91,6 @@
 
 
         <Button
-            android:onClick="loginUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/go"

@@ -1,13 +1,21 @@
 package com.moringaschool.diete.login;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.moringaschool.diete.R;
@@ -15,12 +23,13 @@ import com.moringaschool.diete.ui.HomePage;
 
 import java.lang.Boolean;
 
-public class Signup extends AppCompatActivity {
+public class Signup extends AppCompatActivity implements View.OnClickListener {
     Button login_btn, regtologinbtn;
     TextInputLayout regname, regusername, regpassword, regemail, regphoneNumber;
-
+    public static final String TAG = Signup.class.getSimpleName();
     FirebaseDatabase rootNode;
     DatabaseReference reference;
+    private FirebaseAuth mAuth;
 
     private Boolean validateName() {
         String val = regname.getEditText().getText().toString();
@@ -121,6 +130,11 @@ public class Signup extends AppCompatActivity {
         regphoneNumber = findViewById(R.id.reg_phoneNumber);
         regtologinbtn = findViewById(R.id.reg_tologinbtn);
 
+        login_btn.setOnClickListener(this);
+        regtologinbtn.setOnClickListener(this);
+
+        mAuth = FirebaseAuth.getInstance();
+
 
 
 
@@ -143,6 +157,40 @@ public class Signup extends AppCompatActivity {
             Intent intent = new Intent (Signup.this, HomePage.class);
             startActivity(intent);
         });
+
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view == regtologinbtn){
+            Intent intent = new Intent(Signup.this, Login.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        }
+        if (view == login_btn){
+            createNewUser();
+        }
+
+    }
+
+    private void createNewUser() {
+        String name = regname.getEditText().getText().toString().trim();
+        String username = regusername.getEditText().getText().toString().trim();
+        String email = regemail.getEditText().getText().toString().trim();
+        String phoneNumber = regphoneNumber.getEditText().getText().toString().trim();
+        String password = regpassword.getEditText().getText().toString().trim();
+        String confirmPassword = regpassword.getEditText().getText().toString().trim();
+
+        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, task -> {
+                if (task.isSuccessful()) {
+                    Log.d(TAG, "Authentication successful");
+                } else {
+                    Toast.makeText(Signup.this, "Authentication failed.",
+                            Toast.LENGTH_SHORT).show();
+                }
+        });
+
 
 
     }
