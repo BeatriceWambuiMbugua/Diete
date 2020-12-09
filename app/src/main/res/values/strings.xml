@@ -25,7 +25,10 @@
     <string name="email">Email</string>
     <string name="go">GO</string>
     <string name="already_have_an_account_login">Already have an account? LogIn</string>
+    <string name="dot_loading">...</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="logout">Logout</string>
+    <string name="country">Country</string>
+    <string name="favorite">Favorite</string>
 </resources>

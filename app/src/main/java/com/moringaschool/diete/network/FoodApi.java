@@ -10,6 +10,8 @@ import retrofit2.http.Query;
 public interface FoodApi {
     @GET ("search.php")
     Call<Meals> getMeal();
+    @GET ("search.php")
+    Call<Meals> getMealByName(@Query("s") String mealName);
     @GET ("categories.php")
     Call<Categories>getCategories();
     @GET("filter.php")

@@ -14,6 +14,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,6 +23,7 @@ import com.moringaschool.diete.R;
 import com.moringaschool.diete.adapters.RecyclerViewHomeAdapter;
 import com.moringaschool.diete.adapters.ViewPagerHeaderAdapter;
 import com.moringaschool.diete.category.CategoryActivity;
+import com.moringaschool.diete.detail.DetailActivity;
 import com.moringaschool.diete.login.Login;
 import com.moringaschool.diete.models.Categories;
 import com.moringaschool.diete.models.Meals;
@@ -36,6 +38,7 @@ public class HomePage extends AppCompatActivity implements HomeView {
 
     public static final String EXTRA_CATEGORY = "category";
     public static final String EXTRA_POSITION = "position";
+    public static final String EXTRA_DETAIL = "detail";
     @BindView(R.id.viewPagerHeader) ViewPager viewPagerMeal;
     @BindView(R.id.recyclerCategory)  RecyclerView recyclerViewCategory;
 
@@ -76,7 +79,12 @@ public class HomePage extends AppCompatActivity implements HomeView {
         viewPagerMeal.setPadding(20, 0, 150, 0);
         headerAdapter.notifyDataSetChanged();
 
-        headerAdapter.setOnItemClickListener((v, position) -> {
+        headerAdapter.setOnItemClickListener((view, position) -> {
+
+            TextView mealName = view.findViewById(R.id.mealName);
+            Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
+            intent.putExtra(EXTRA_DETAIL, mealName.getText().toString());
+            startActivity(intent);
             Toast.makeText(this, meal.get(position).getStrMeal(), Toast.LENGTH_SHORT).show();
         });
         }

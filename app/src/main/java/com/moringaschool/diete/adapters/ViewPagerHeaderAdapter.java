@@ -20,7 +20,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public class ViewPagerHeaderAdapter extends PagerAdapter {
-    //private static final String TAG = getContext
+
     private List<Meals.Meal> meals;
     private Context context;
     private static ClickListener clickListener;
@@ -42,13 +42,16 @@ public class ViewPagerHeaderAdapter extends PagerAdapter {
 
     @Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
-        return view == ((RelativeLayout) object);
+        return view.equals(object);
     }
 
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_page_header, container, false);
+        View view = LayoutInflater.from(context).inflate(
+                R.layout.item_page_header,
+                container,
+                false);
 
         ImageView mealThumb = view.findViewById(R.id.mealThumb);
         TextView mealName = view.findViewById(R.id.mealName);

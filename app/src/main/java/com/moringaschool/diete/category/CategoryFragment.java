@@ -2,6 +2,7 @@ package com.moringaschool.diete.category;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 import com.moringaschool.diete.Constants;
 import com.moringaschool.diete.R;
 import com.moringaschool.diete.adapters.RecyclerViewMealByCategory;
+import com.moringaschool.diete.detail.DetailActivity;
 import com.moringaschool.diete.models.Meals;
 import com.squareup.picasso.Picasso;
 
@@ -30,7 +32,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static com.moringaschool.diete.ui.HomePage.EXTRA_DETAIL;
+
 public class CategoryFragment extends Fragment implements CategoryView {
+
 
     @BindView(R.id.recyclerView) RecyclerView recyclerView;
     @BindView(R.id.progressBar) ProgressBar progressBar;
@@ -89,6 +94,10 @@ public class CategoryFragment extends Fragment implements CategoryView {
         adapter.notifyDataSetChanged();
 
         adapter.setOnItemClickListener((view, position) -> {
+            TextView mealName = view.findViewById(R.id.mealName);
+            Intent intent = new Intent(getActivity(), DetailActivity.class);
+            intent.putExtra(EXTRA_DETAIL, mealName.getText().toString());
+            startActivity(intent);
             Toast.makeText(getActivity(), "meal : + " + meals.get(position). getStrMeal(), Toast.LENGTH_SHORT).show();
         });
 
