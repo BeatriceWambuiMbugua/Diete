@@ -4,11 +4,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@color/green"
+    tools:context=".ui.MainActivity">
 
-    <TextView
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:transitionName="@string/food_image"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="51dp"
+        android:contentDescription="@string/food_image"
+        android:src="@drawable/food" />
+
+
+    <TextView
+        android:id="@+id/appName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/quando"
+        android:layout_marginTop="20dp"
+        android:paddingTop="10dp"
+        android:text="@string/diete"
+        android:transitionName="@string/app_name"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/appNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/appName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/antic"
+        android:paddingTop="5dp"
+        android:transitionName="appnameview"
+        android:text="@string/get_healthy_with_diete"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"  />
+
 
 </RelativeLayout>
